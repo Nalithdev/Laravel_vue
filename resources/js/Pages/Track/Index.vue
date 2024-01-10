@@ -1,14 +1,16 @@
 <script>
 import MusicLayout from "@/Layouts/MusicLayout.vue";
 import {Link} from "@inertiajs/vue3";
+import Track from "@/Components/Track/Track.vue";
 
 export default {
     components: {
         MusicLayout,
-        Link
+        Link,
+        Track
     },
     props: {
-        track: Array
+        track: Array,
     },
     data() {
         return {
@@ -28,6 +30,7 @@ export default {
     },
     methods: {
         play(track) {
+            console.log('play')
             const url = '/storage/' + track.music;
 
             if(!this.current_song) {
@@ -56,28 +59,19 @@ export default {
 <template>
     <MusicLayout>
         <template #content>
+
             <div>
                 <input id="search" type="search" name="search" v-model="search">
+                <div class="coucou">
+                <Track
+                    v-for="tracks in filteredTracks" :key="tracks.uuid"  :tracks="tracks" @play="play"/>
+                </div>
 
             </div>
 
             <div class="coucou" >
-                <li v-for="tracks in filteredTracks" :key="tracks" @click="play(tracks)">
-                    <p class="mr-3">
-                        {{ tracks.artist }}
-                    </p>
-
-                    <p>
-                        {{ tracks.title }}
-                    </p>
-                    <br>
-                    <p>
-                        {{ tracks.uuid }}
-                    </p>
-                    <img :src="'/storage/' + tracks.image" alt="my image ">
 
 
-                </li>
             </div>
 
 
