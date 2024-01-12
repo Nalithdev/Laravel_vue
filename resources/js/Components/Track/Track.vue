@@ -42,12 +42,14 @@ import {Link} from "@inertiajs/vue3";
         <button @click="Handleclick()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
             Play
         </button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        <button v-if="$page.props.isAdmin"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
             <Link :href="route('track.edit', {track: tracks.uuid})">
                 Edit
             </Link>
         </button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        <button v-if="$page.props.isAdmin"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
             <Link :href="route('track.destroy', {track: tracks})" method='delete'as='button'>
                 delete
             </Link>

@@ -62,6 +62,7 @@ export default {
 
             <div>
                 <input id="search" type="search" name="search" v-model="search">
+
                 <div class="coucou">
                 <Track
                     v-for="tracks in filteredTracks" :key="tracks.uuid"  :tracks="tracks" @play="play"/>
@@ -78,6 +79,7 @@ export default {
         </template>
         <template #action>
             <Link
+                v-if="$page.props.isAdmin"
                 :href="route('track.create')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Create
             </Link>

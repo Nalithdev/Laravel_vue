@@ -53,8 +53,12 @@ export default {
                                     class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                    aria-current="page">Musique
                                 </Link>
-                                <a href="#"
-                                   class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Playlist</a>
+
+                                <Link
+                                    :href="route('playlists.index')"
+                                    class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    aria-current="page">Playlist
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -88,7 +92,7 @@ export default {
                                 </Link>
                                 <Link
                                     v-if="$page.props.auth.user"
-                                    :href="route('logout')" methods="post" as="button"
+                                    :href="route('logout')" method="post" as="button"
                                     class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium"
                                     aria-current="page" >Logout
                                 </Link>

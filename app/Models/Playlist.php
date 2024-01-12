@@ -6,27 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Track extends Model
+class Playlist extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'uuid',
         'title',
-        'artist',
-        'image',
-        'music',
-        'display',
-        'play_count'
+        'user_id',
+
     ];
 
-    public function getRouteKeyName()
+    public function user()
     {
-        return 'uuid';
+        return $this->belongsTo(User::class);
     }
-
-    public function playlists()
+    public function tracks()
     {
-        return $this->BelongsToMany(Playlist::class);
+        return $this->BelongsToMany(Track::class);
     }
 }
