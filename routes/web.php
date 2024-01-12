@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\ApiKeyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\TrackController;
@@ -43,6 +45,9 @@ Route::middleware([
     //Playlist
 
     Route::resource('playlists', PlaylistController::class)->except('edit','update');
+
+    Route::resource('apiKeys', ApiKeyController::class)->except('edit','update');
+
 });
 
 Route::get('home', [HomeController::class, 'index']);
